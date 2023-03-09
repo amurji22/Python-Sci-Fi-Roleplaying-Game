@@ -1,4 +1,1 @@
 import pygame
-
-
-import pygame
