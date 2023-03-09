@@ -8,7 +8,7 @@ bg_rect = bg_img.get_rect()
 
 screen = pygame.display.set_mode((1200, 768))
 screen_rect = screen.get_rect()
-print(screen_rect)
+
 start_button_img = pygame.image.load('Start.png')
 start_button_rect = start_button_img.get_rect()
 
