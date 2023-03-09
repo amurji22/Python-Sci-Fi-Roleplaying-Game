@@ -2,10 +2,10 @@ import pygame, time
 
 pygame.init()
 
-bg_img = pygame.image.load('ezgif-1-dfd70dbc93.jpg')
+bg_img = pygame.image.load('background.jpg')
 bg_rect = bg_img.get_rect()
 
-screen = pygame.display.set_mode((1366, 768))
+screen = pygame.display.set_mode((1200, 768))
 screen_rect = screen.get_rect()
 
 
