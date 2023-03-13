@@ -12,10 +12,14 @@ screen_rect = screen.get_rect()
 start_button_img = pygame.image.load('Start.png')
 start_button_rect = start_button_img.get_rect()
 
+exit_button_img = pygame.image.load('Exit.png')
+exit_button_rect = exit_button_img.get_rect()
+
 
 def render():
     screen.blit(bg_img, bg_rect)
     screen.blit(start_button_img, (384, 150))
+    screen.blit(exit_button_img,(875,555))
     pygame.display.flip()
 
 
