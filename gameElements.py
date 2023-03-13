@@ -29,4 +29,3 @@ class Button():
 class GameState():
     QUIT = -1
     TITLE = 0
-    CHARACTER = 1
