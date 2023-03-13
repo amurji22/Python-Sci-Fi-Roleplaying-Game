@@ -31,6 +31,10 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            exit_button_rect = exit_button_img.get_rect().move(875,555)
+            if exit_button_rect.collidepoint(event.pos):
+                running = False
     render()
     time.sleep(0.05)
 pygame.quit()
