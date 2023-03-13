@@ -18,7 +18,6 @@ start_button = gameElements.Button(screen_rect.centerx, screen_rect.centery, sta
 
 def render():
     screen.blit(bg_img, bg_rect)
-    
     start_button.draw(screen)
     pygame.display.flip()
 
