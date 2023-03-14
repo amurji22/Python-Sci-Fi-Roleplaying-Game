@@ -78,15 +78,15 @@ while running:
                 exec(open('main.py').read())
     # animations for characters if the mouse hovers over the images
     if character_one_rect.collidepoint(pygame.mouse.get_pos()):
-        screen.blit(character_one_img_big, (75, 75))
+        screen.blit(character_one_img_big, (190, 75))
         pygame.display.flip()
         time.sleep(0.7)
     elif character_two_rect.collidepoint(pygame.mouse.get_pos()):
-        screen.blit(character_two_img_big, (441, 75))
+        screen.blit(character_two_img_big, (490, 75))
         pygame.display.flip()
         time.sleep(0.7)
     elif character_three_rect.collidepoint(pygame.mouse.get_pos()):
-        screen.blit(character_three_img_big, (800, 75))
+        screen.blit(character_three_img_big, (790, 75))
         pygame.display.flip()
         time.sleep(0.7)
     
