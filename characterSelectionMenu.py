@@ -11,6 +11,9 @@ screen_rect = screen.get_rect()
 bg_img = pygame.image.load("character_background.jpg")
 bg_rect = bg_img.get_rect()
 
+main_menu_button_img = pygame.image.load('Exit.png')
+main_menu_button_rect = main_menu_button_img.get_rect()
+
 # create the character images and their rect objects
 character_one_img = pygame.image.load("Character_One.png")
 character_two_img = pygame.image.load("Character_Two.png")
@@ -38,6 +41,7 @@ def render():
     screen.blit(character_two_img, (466, 100))
     screen.blit(character_three_img, (825, 100))
     screen.blit(text_img, (200, 400))
+    screen.blit(main_menu_button_img,(875,555))
     character_one_rect.update((100, 100), (250, 400))
     character_two_rect.update((466, 100), (250, 400))
     character_three_rect.update((825, 100), (250,400))
@@ -60,6 +64,7 @@ while running:
         # detect mouse collisions with the character sprite
         # set character_selected to the character the user clicks on
         if event.type == pygame.MOUSEBUTTONDOWN:
+            main_menu_button_rect = main_menu_button_img.get_rect().move(875,555)
             if character_one_rect.collidepoint(pygame.mouse.get_pos()):
                 character_selected = 1
                 pygame.quit()
@@ -69,7 +74,8 @@ while running:
             elif character_three_rect.collidepoint(pygame.mouse.get_pos()):
                 character_selected = 3
                 pygame.quit()
-    
+            elif main_menu_button_rect.collidepoint(event.pos):
+                exec(open('main.py').read())
     # animations for characters if the mouse hovers over the images
     if character_one_rect.collidepoint(pygame.mouse.get_pos()):
         screen.blit(character_one_img_big, (75, 75))

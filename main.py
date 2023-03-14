@@ -39,7 +39,7 @@ while running:
                 running = False
             start_button_rect = start_button_img.get_rect().move(384, 150)
             if start_button_rect.collidepoint(event.pos):
-                exec(open('character_selection.py').read())
+                exec(open('characterSelectionMenu.py').read())
         
     render()
     time.sleep(0.05)
