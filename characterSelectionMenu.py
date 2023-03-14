@@ -37,10 +37,10 @@ character_three_img_big = pygame.transform.scale(character_three_img, (character
 def render():
 
     screen.blit(bg_img, bg_rect)
-    screen.blit(character_one_img, (100, 100))
-    screen.blit(character_two_img, (466, 100))
-    screen.blit(character_three_img, (825, 100))
-    screen.blit(text_img, (200, 400))
+    screen.blit(character_one_img, (220, 250))
+    screen.blit(character_two_img, (520, 250))
+    screen.blit(character_three_img, (820, 250))
+    screen.blit(text_img, (320, 0))
     screen.blit(main_menu_button_img,(875,555))
     character_one_rect.update((100, 100), (250, 400))
     character_two_rect.update((466, 100), (250, 400))
