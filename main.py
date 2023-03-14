@@ -2,7 +2,7 @@ import pygame
 import time
 
 class Button:
-    def __init__(self, image, pos, height, radius, elevation):
+    def __init__(self, image, pos, height, radius, elevation,lowest_elevation):
         
         #attributes
         self.command = False
@@ -10,6 +10,7 @@ class Button:
         self.radius = radius
         self.elevation = elevation
         self.dynamic_elevation = elevation
+        self.lowest_elevation = lowest_elevation
         self.original_y_pos = pos[1]
 
         # top rectangle
@@ -33,7 +34,7 @@ class Button:
         mouse_pos = pygame.mouse.get_pos()
         if self.top_rect.collidepoint(mouse_pos):
             if pygame.mouse.get_pressed()[0]:
-                self.dynamic_elevation = 4
+                self.dynamic_elevation = self.lowest_elevation
                 self.pressed  = True
             else: 
                 self.dynamic_elevation = self.elevation
@@ -59,8 +60,8 @@ screen = pygame.display.set_mode((1200, 768))
 screen_rect = screen.get_rect()
 
 
-startButton = Button('Start.png',(600, 384),130,75,25)
-exitButton = Button('Exit.png',(1000,700),90,50,20)
+startButton = Button('Start.png',(600, 384),130,75,20,4)
+exitButton = Button('Exit.png',(1000,700),90,50,12,2)
 screen.blit(bg_img, bg_rect)
 
 # def render():
