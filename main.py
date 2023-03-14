@@ -22,18 +22,8 @@ class Button:
         self.bottom_rect.center = (pos)
         self.bottom_colour = "#495d6e"
 
-    def drawBackground(self):
-        screen.blit(bg_img, bg_rect)
-
-
     def draw(self):
         self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
-  
-
-        # self.bottom_rect.midtop = self.top_rect.midtop
-        # self.bottom_rect.height = self.top_rect.height + self.dynamic_elevation
-
-
         pygame.draw.rect(screen,self.bottom_colour, self.bottom_rect, border_radius=self.radius)
         screen.blit(self.image,self.top_rect)
         self.check_click()
@@ -107,8 +97,7 @@ while running:
         running = False
         exitButton.command = False
 
-
-    startButton.drawBackground()
+    screen.blit(bg_img, bg_rect)
     startButton.draw()
     exitButton.draw()
     pygame.display.flip()
