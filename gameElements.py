@@ -32,13 +32,15 @@ class Button:
         self.bigBottom_rect.center = (pos)
 
     def draw_noHover(self):
+
         self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
         pygame.draw.rect(self.screen,self.bottom_colour, self.bottom_rect, border_radius=self.radius)
         self.screen.blit(self.image,self.top_rect)
         self.check_click()
     
     def draw_hover(self):
-        self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
+        self.dynamic_elevation = self.dynamic_elevation *1.5
+        self.bigTopImage_rect.centery = self.original_y_pos - self.dynamic_elevation
         pygame.draw.rect(self.screen,self.bottom_colour, self.bigBottom_rect, border_radius=self.radius)
         self.screen.blit(self.bigTopImage,self.bigTopImage_rect)
         self.check_click()
@@ -104,6 +106,7 @@ class characterButton:
         self.check_click()
     
     def draw_hover(self):
+        self
         self.bigTopImage_rect.centery = self.original_y_pos - self.dynamic_elevation
         self.screen.blit(self.bigBottomImage, self.bigBottomImage_rect)
         self.screen.blit(self.bigTopImage, self.bigTopImage_rect)
