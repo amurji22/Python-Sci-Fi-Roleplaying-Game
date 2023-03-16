@@ -1,31 +1,89 @@
 import pygame
 
-class Button():
-    def __init__(self, x, y, image, scaleDefault, action=None):
-        width = image.get_width()
-        height = image.get_height()
-        self.image = pygame.transform.scale(image, (int(width * scaleDefault), int(height * scaleDefault)))
-        self.rect_img = self.image.get_rect()
-        self.rect_img.center = (x, y)
-        self.clicked = False
-        self.mouse_over = False
-        self.action = action
+class Button:
+    def __init__(self, image, pos, height, radius, elevation,lowest_elevation):
+        
+        #attributes
+        self.command = False
+        self.pressed = False
+        self.radius = radius
+        self.elevation = elevation
+        self.dynamic_elevation = elevation
+        self.lowest_elevation = lowest_elevation
+        self.original_y_pos = pos[1]
 
-    def draw(self, surface):
-        #get mouse position
-        pos = pygame.mouse.get_pos()
+        # top rectangle
+        self.image = pygame.image.load(image)
+        self.top_rect = self.image.get_rect()
+        self.top_rect.center = (pos)
 
-        #check mouseover and clicked conditions
-        if self.rect_img.collidepoint(pos):
-            self.mouse_over = True
-            if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
-                self.clicked = True
-                return self.action
-            else:
-                self.clicked = False
+        # bottom rectangle
+        self.bottom_rect = pygame.Rect(pos,(self.top_rect.width,height))
+        self.bottom_rect.center = (pos)
+        self.bottom_colour = "#495d6e"
 
-        surface.blit(self.image, self.rect_img)
-  
-class GameState():
-    QUIT = -1
-    TITLE = 0
+    def draw(self):
+        self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
+        pygame.draw.rect(screen,self.bottom_colour, self.bottom_rect, border_radius=self.radius)
+        screen.blit(self.image,self.top_rect)
+        self.check_click()
+
+
+    def check_click(self):
+        mouse_pos = pygame.mouse.get_pos()
+        if self.top_rect.collidepoint(mouse_pos):
+            if pygame.mouse.get_pressed()[0]:
+                self.dynamic_elevation = self.lowest_elevation
+                self.pressed  = True
+            else: 
+                self.dynamic_elevation = self.elevation
+                if self.pressed == True:
+                    print('click')
+                    self.pressed = False
+                    self.command = True
+        else:
+            self.dynamic_elevation = self.elevation
+
+class characterButton:
+    def __init__(self, topImage, bottomImage, pos, elevation,lowest_elevation):
+        
+        #attributes
+        self.command = False
+        self.pressed = False
+        self.elevation = elevation
+        self.dynamic_elevation = elevation
+        self.lowest_elevation = lowest_elevation
+        self.original_y_pos = pos[1]
+
+        # top rectangle
+        self.topImage = pygame.image.load(topImage)
+        self.top_rect = self.topImage.get_rect()
+        self.top_rect.center = (pos)
+
+        # bottom rectangle
+        self.bottomImage = pygame.image.load(bottomImage)
+        self.bottom_rect = self.bottomImage.get_rect()
+        self.bottom_rect.center = (pos)
+
+
+    def draw(self):
+        self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
+        screen.blit(self.bottomImage,self.bottom_rect)
+        screen.blit(self.topImage,self.top_rect)
+        self.check_click()
+
+
+    def check_click(self):
+        mouse_pos = pygame.mouse.get_pos()
+        if self.top_rect.collidepoint(mouse_pos):
+            if pygame.mouse.get_pressed()[0]:
+                self.dynamic_elevation = self.lowest_elevation
+                self.pressed  = True
+            else: 
+                self.dynamic_elevation = self.elevation
+                if self.pressed == True:
+                    print('click')
+                    self.pressed = False
+                    self.command = True
+        else:
+            self.dynamic_elevation = self.elevation
