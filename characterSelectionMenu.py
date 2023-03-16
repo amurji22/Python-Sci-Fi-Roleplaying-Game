@@ -63,7 +63,7 @@ while running:
     characterOne.check_hover()
     characterTwo.check_hover()
     characterThree.check_hover()
-    mainMenuButton.draw()
+    mainMenuButton.check_hover()
     pygame.display.flip()
     time.sleep(0.05)
 

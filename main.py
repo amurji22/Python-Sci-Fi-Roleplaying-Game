@@ -47,8 +47,8 @@ while running:
         exitButton.command = False
 
     screen.blit(bg_img, bg_rect)
-    startButton.draw()
-    exitButton.draw()
+    startButton.check_hover()
+    exitButton.check_hover()
     pygame.display.flip()
     time.sleep(0.05)
 pygame.quit()
