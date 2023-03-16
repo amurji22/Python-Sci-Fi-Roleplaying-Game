@@ -60,9 +60,9 @@ while running:
 
  
     render()
-    characterOne.draw()
-    characterTwo.draw()
-    characterThree.draw()
+    characterOne.check_hover()
+    characterTwo.check_hover()
+    characterThree.check_hover()
     mainMenuButton.draw()
     pygame.display.flip()
     time.sleep(0.05)
