@@ -1,7 +1,7 @@
 import pygame
 
 class Button:
-    def __init__(self, image, pos, height, radius, elevation,lowest_elevation):
+    def __init__(self, image, pos, height, radius, elevation,lowest_elevation, screen):
         
         #attributes
         self.command = False
@@ -11,6 +11,7 @@ class Button:
         self.dynamic_elevation = elevation
         self.lowest_elevation = lowest_elevation
         self.original_y_pos = pos[1]
+        self.screen = screen
 
         # top rectangle
         self.image = pygame.image.load(image)
@@ -24,8 +25,8 @@ class Button:
 
     def draw(self):
         self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
-        pygame.draw.rect(screen,self.bottom_colour, self.bottom_rect, border_radius=self.radius)
-        screen.blit(self.image,self.top_rect)
+        pygame.draw.rect(self.screen,self.bottom_colour, self.bottom_rect, border_radius=self.radius)
+        self.screen.blit(self.image,self.top_rect)
         self.check_click()
 
 
@@ -45,7 +46,7 @@ class Button:
             self.dynamic_elevation = self.elevation
 
 class characterButton:
-    def __init__(self, topImage, bottomImage, pos, elevation,lowest_elevation):
+    def __init__(self, topImage, bottomImage, pos, elevation,lowest_elevation, screen):
         
         #attributes
         self.command = False
@@ -54,6 +55,7 @@ class characterButton:
         self.dynamic_elevation = elevation
         self.lowest_elevation = lowest_elevation
         self.original_y_pos = pos[1]
+        self.screen = screen
 
         # top rectangle
         self.topImage = pygame.image.load(topImage)
@@ -68,8 +70,8 @@ class characterButton:
 
     def draw(self):
         self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
-        screen.blit(self.bottomImage,self.bottom_rect)
-        screen.blit(self.topImage,self.top_rect)
+        self.screen.blit(self.bottomImage,self.bottom_rect)
+        self.screen.blit(self.topImage,self.top_rect)
         self.check_click()
 
 
