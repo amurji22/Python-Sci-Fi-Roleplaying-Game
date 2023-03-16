@@ -66,14 +66,35 @@ class characterButton:
         self.bottomImage = pygame.image.load(bottomImage)
         self.bottom_rect = self.bottomImage.get_rect()
         self.bottom_rect.center = (pos)
+        
+        # for hover animation
+        self.bigTopImage = pygame.transform.scale(self.topImage, (self.top_rect.width * 1.1, self.top_rect.height * 1.1))
+        self.bigTopImage_rect = self.bigTopImage.get_rect()
+        self.bigTopImage_rect.center = (pos)
 
-
-    def draw(self):
+        self.bigBottomImage = pygame.transform.scale(self.bottomImage, (self.bottom_rect.width * 1.1, self.bottom_rect.height * 1.1))
+        self.bigBottomImage_rect = self.bigBottomImage.get_rect()
+        self.bigBottomImage_rect.center = (pos)
+        
+        
+        
+    def draw_noHover(self):
         self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
-        self.screen.blit(self.bottomImage,self.bottom_rect)
-        self.screen.blit(self.topImage,self.top_rect)
+        screen.blit(self.bottomImage,self.bottom_rect)
+        screen.blit(self.topImage,self.top_rect)
         self.check_click()
-
+    
+    def draw_hover(self):
+        self.bigTopImage_rect.centery = self.original_y_pos - self.dynamic_elevation
+        screen.blit(self.bigBottomImage, self.bigBottomImage_rect)
+        screen.blit(self.bigTopImage, self.bigTopImage_rect)
+        self.check_click()
+        
+    def check_hover(self):
+        if self.top_rect.collidepoint(pygame.mouse.get_pos()):
+            self.draw_hover()
+        else:
+            self.draw_noHover()
 
     def check_click(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -89,3 +110,4 @@ class characterButton:
                     self.command = True
         else:
             self.dynamic_elevation = self.elevation
+            
