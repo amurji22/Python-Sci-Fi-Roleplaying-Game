@@ -80,14 +80,14 @@ class characterButton:
         
     def draw_noHover(self):
         self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
-        screen.blit(self.bottomImage,self.bottom_rect)
-        screen.blit(self.topImage,self.top_rect)
+        self.screen.blit(self.bottomImage,self.bottom_rect)
+        self.screen.blit(self.topImage,self.top_rect)
         self.check_click()
     
     def draw_hover(self):
         self.bigTopImage_rect.centery = self.original_y_pos - self.dynamic_elevation
-        screen.blit(self.bigBottomImage, self.bigBottomImage_rect)
-        screen.blit(self.bigTopImage, self.bigTopImage_rect)
+        self.screen.blit(self.bigBottomImage, self.bigBottomImage_rect)
+        self.screen.blit(self.bigTopImage, self.bigTopImage_rect)
         self.check_click()
         
     def check_hover(self):
