@@ -96,7 +96,7 @@ class characterButton:
         self.bigBottomImage = pygame.transform.scale(self.bottomImage, (self.bottom_rect.width * 1.1, self.bottom_rect.height * 1.1))
         self.bigBottomImage_rect = self.bigBottomImage.get_rect()
         self.bigBottomImage_rect.center = (pos)
-            
+          
     def draw_noHover(self):
         self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
         self.screen.blit(self.bottomImage,self.bottom_rect)
@@ -130,4 +130,48 @@ class characterButton:
                     self.command = True
         else:
             self.dynamic_elevation = self.elevation
+
+class Character:
+    def __init__(self, image_path, x, y, scale=1, speed=1):
+        self.image = pygame.image.load(image_path)
+        self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * scale), int(self.image.get_height() * scale)))
+        self.rect = self.image.get_rect()
+        self.rect.x = x/2 - self.rect.width/2
+        self.rect.y = y/2 - self.rect.height/2
+        self.speed = speed
+        self.screen_width = x
+        self.screen_height = y
+        self.rect_posx = self.rect.x
+        self.rect_posy = self.rect.y
+
+    def movement(self, pressed_keys, delta_time):
+        if pressed_keys[pygame.K_UP] and self.rect.top > 0:
+            self.rect_posy -= self.speed * delta_time
+            self.rect.y = round(self.rect_posy)
+        if pressed_keys[pygame.K_DOWN] and self.rect.bottom < self.screen_height:
+            self.rect_posy += self.speed * delta_time
+            self.rect.y = round(self.rect_posy)
+        if pressed_keys[pygame.K_LEFT] and self.rect.left > 0:
+            self.rect_posx -= self.speed * delta_time
+            self.rect.x = round(self.rect_posx)
+        if pressed_keys[pygame.K_RIGHT] and self.rect.right < self.screen_width:
+            self.rect_posx += self.speed * delta_time
+            self.rect.x = round(self.rect_posx)
+        
+        #logic when player chooses a direction
+        if self.rect.top < 0:
+            self.rect.y = 0
+            print("Minigame 3")
+        if self.rect.bottom > self.screen_height:
+            self.rect.y = 0
+            print("Scrap spaceship yard")
+        if self.rect.left < 0:
+            self.rect.x = 0
+            print("Minigame 1!")
+        if self.rect.right > self.screen_width:
+            self.rect.x = 0
+            print("Minigame 2!")
+        
+
+
             
