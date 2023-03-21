@@ -1,5 +1,5 @@
 import pygame, time, random
-from characterSelectionMenu import character_selected
+#from characterSelectionMenu import character_selected
 
 pygame.init()
 
@@ -72,7 +72,7 @@ while running:
                     exec(open('before_space_town.py').read())
                    
 
-    print(character_selected)
+    #print(character_selected)
     # move the aliens on the screen with their speeds
     speed_alien_rect = speed_alien_rect.move(speed_s)
     healer_alien_rect = healer_alien_rect.move(speed_h)

@@ -32,6 +32,7 @@ render()
 character_selected = 0
 
 # game loop
+nextScene = False
 running = True
 while running:
     # event loop
@@ -44,20 +45,15 @@ while running:
         mainMenuButton.command = False
     elif characterOne.command == True:
         character_selected = 1
-        print(character_selected)
-        characterOne.command = False
-        # pygame.quit()
+        nextScene = True
     elif characterTwo.command == True:
         character_selected = 2
-        print(character_selected)
-        characterTwo.command = False
-        # pygame.quit()
+        nextScene = True
     elif characterThree.command == True:
         character_selected = 3
-        print(character_selected)
-        characterThree.command = False
-        # pygame.quit()
-
+        nextScene = True
+    if(nextScene):
+        exec(open('before_capture_alien.py').read())
  
     render()
     characterOne.check_hover()
