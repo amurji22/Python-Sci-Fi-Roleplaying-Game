@@ -1,7 +1,7 @@
 import pygame
 
 class Button:
-    def __init__(self, image, pos, height, radius, elevation,lowest_elevation, screen):
+    def __init__(self, image, pos, height, radius, elevation, lowest_elevation, screen):
         
         #attributes
         self.command = False
@@ -67,7 +67,7 @@ class Button:
             self.draw_noHover()
 
 class characterButton:
-    def __init__(self, topImage, bottomImage, pos, elevation,lowest_elevation, screen):
+    def __init__(self, topImage, bottomImage, pos, elevation, lowest_elevation, screen):
         
         #attributes
         self.command = False
@@ -96,9 +96,7 @@ class characterButton:
         self.bigBottomImage = pygame.transform.scale(self.bottomImage, (self.bottom_rect.width * 1.1, self.bottom_rect.height * 1.1))
         self.bigBottomImage_rect = self.bigBottomImage.get_rect()
         self.bigBottomImage_rect.center = (pos)
-        
-        
-        
+            
     def draw_noHover(self):
         self.top_rect.centery = self.original_y_pos - self.dynamic_elevation
         self.screen.blit(self.bottomImage,self.bottom_rect)
