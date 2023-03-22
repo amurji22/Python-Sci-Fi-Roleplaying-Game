@@ -30,7 +30,7 @@ while running:
             # if the space bar is pressed, move to next scene
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                exec(open('capture_alien.py').read())
+                exec(open('after_alien_capture.py').read())
 
 
     render()
