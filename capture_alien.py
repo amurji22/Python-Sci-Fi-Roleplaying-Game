@@ -58,17 +58,17 @@ while running:
                 
                 # if the healer alien is clicked
                 if healer_alien_rect.collidepoint(event.pos):
-                    alien_type = "healer"
+                    alien_type = "health_alien.png"
                     exec(open('after_alien_capture.py').read())
 
                 # if the speed alien is clicked
                 if speed_alien_rect.collidepoint(event.pos):
-                    alien_type = "speed"
+                    alien_type = "speed_alien.png"
                     exec(open('after_alien_capture.py').read())
 
                 # if the ammo alien is clicked
                 if ammo_alien_rect.collidepoint(event.pos):
-                    alien_type = "ammo"
+                    alien_type = "ammo_alien.png"
                     exec(open('after_alien_capture.py').read())
                    
 
