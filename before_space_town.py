@@ -1,4 +1,5 @@
 import pygame
+from characterSelectionMenu import character_selected
 
 pygame.init()
 
