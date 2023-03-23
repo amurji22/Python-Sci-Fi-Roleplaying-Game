@@ -5,7 +5,7 @@ pygame.init()
 screen = pygame.display.set_mode((1200, 800))
 pygame.display.set_caption("Mini Game 1 Snake Game ")
 
-star_image = pygame.image.load("star.png")
+star_image = pygame.image.load("images/star.png")
 # -- get its rect object
 star_rect = star_image.get_rect()
 
