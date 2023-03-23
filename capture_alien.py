@@ -7,13 +7,13 @@ pygame.init()
 screen = pygame.display.set_mode((1200, 740))
 
 # load the background and create its rect
-bg_img = pygame.image.load("space_background.jpg")
+bg_img = pygame.image.load("images/space_background.jpg")
 bg_rect = bg_img.get_rect()
 
 # load the three aliens
-speed_alien_img = pygame.image.load("speed_alien.png")
-healer_alien_img = pygame.image.load("health_alien.png")
-ammo_alien_img = pygame.image.load("ammo_alien.png")
+speed_alien_img = pygame.image.load("images/speed_alien.png")
+healer_alien_img = pygame.image.load("images/health_alien.png")
+ammo_alien_img = pygame.image.load("images/ammo_alien.png")
 speed_alien_rect = speed_alien_img.get_rect()
 healer_alien_rect = healer_alien_img.get_rect()
 ammo_alien_rect = ammo_alien_img.get_rect()
@@ -58,17 +58,17 @@ while running:
                 
                 # if the healer alien is clicked
                 if healer_alien_rect.collidepoint(event.pos):
-                    alien_type = "health_alien.png"
+                    alien_type = "images/health_alien.png"
                     exec(open('after_alien_capture.py').read())
 
                 # if the speed alien is clicked
                 if speed_alien_rect.collidepoint(event.pos):
-                    alien_type = "speed_alien.png"
+                    alien_type = "images/speed_alien.png"
                     exec(open('after_alien_capture.py').read())
 
                 # if the ammo alien is clicked
                 if ammo_alien_rect.collidepoint(event.pos):
-                    alien_type = "ammo_alien.png"
+                    alien_type = "images/ammo_alien.png"
                     exec(open('after_alien_capture.py').read())
                    
 

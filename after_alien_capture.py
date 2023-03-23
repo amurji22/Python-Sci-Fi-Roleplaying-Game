@@ -8,7 +8,7 @@ screen = pygame.display.set_mode((1200, 740))
 screen_rect = screen.get_rect()
 
 # load the background and create its rect
-bg_img = pygame.image.load("after_alien_capture_background.jpg")
+bg_img = pygame.image.load("images/after_alien_capture_background.jpg")
 bg_rect = bg_img.get_rect()
 
 # load the alien that was picked
@@ -24,13 +24,13 @@ def render():
     end_text = ""
 
 # create the strings to be used for the text depending on alien that was picked
-    if(alien_type == "health_alien.png"):
+    if(alien_type == "images/health_alien.png"):
         alien_chosen = "health alien"
         end_text = "This alien will provide you an extra life in the future!"
-    elif (alien_type == "ammo_alien.png"):
+    elif (alien_type == "images/ammo_alien.png"):
         alien_chosen = "ammo alien"
         end_text = "This alien will provide your spaceship extra ammo later!"
-    elif (alien_type == "speed_alien.png"):
+    elif (alien_type == "images/speed_alien.png"):
         alien_chosen = "speed alien"
         end_text = "This alien will increase the speed of your spaceship later!"
 

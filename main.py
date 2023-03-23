@@ -3,15 +3,15 @@ import gameElements
         
 pygame.init()
 
-bg_img = pygame.image.load('background.jpg')
+bg_img = pygame.image.load('images/background.jpg')
 bg_rect = bg_img.get_rect()
 
 screen = pygame.display.set_mode((1200, 768))
 screen_rect = screen.get_rect()
 
 
-startButton = gameElements.Button('Start.png',(600, 384),130,75,20,4, screen)
-exitButton = gameElements.Button('Exit.png',(1000,700),90,50,12,2, screen)
+startButton = gameElements.Button('images/Start.png',(600, 384),130,75,20,4, screen)
+exitButton = gameElements.Button('images/Exit.png',(1000,700),90,50,12,2, screen)
 screen.blit(bg_img, bg_rect)
 
 # def render():
