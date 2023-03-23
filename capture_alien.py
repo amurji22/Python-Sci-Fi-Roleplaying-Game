@@ -1,5 +1,5 @@
 import pygame, time, random
-#from characterSelectionMenu import character_selected
+from characterSelectionMenu import character_selected
 
 pygame.init()
 
@@ -26,7 +26,6 @@ healer_alien_rect.y = random.randrange(0, screen.get_rect().height - healer_alie
 ammo_alien_rect.x = random.randrange(800, 1200 - ammo_alien_rect.width)
 ammo_alien_rect.y = random.randrange(0, screen.get_rect().height - ammo_alien_rect.height)
 
-
 # render function
 def render():
     screen.blit(bg_img, bg_rect)
@@ -45,7 +44,6 @@ speed_a = [2, 2]
 alien_picked = False
 # string to be set to the type of alien picked
 alien_type = "none"
-
 
 # game loop
 running = True

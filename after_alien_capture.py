@@ -1,5 +1,6 @@
 import pygame
 from capture_alien import alien_type
+from characterSelectionMenu import character_selected
 
 pygame.init()
 

@@ -29,7 +29,7 @@ def render():
 render()
 
 # variable to store the character selected
-character_selected = 0
+character_selected = "none"
 
 # game loop
 nextScene = False
@@ -44,16 +44,16 @@ while running:
         exec(open('main.py').read())
         mainMenuButton.command = False
     elif characterOne.command == True:
-        character_selected = 1
-        nextScene = True
-    elif characterTwo.command == True:
-        character_selected = 2
-        nextScene = True
-    elif characterThree.command == True:
-        character_selected = 3
-        nextScene = True
-    if(nextScene):
+        character_selected = "images/Character_One.png"
         exec(open('before_capture_alien.py').read())
+    elif characterTwo.command == True:
+        character_selected = "images/Character_Two.png"
+        exec(open('before_capture_alien.py').read())
+    elif characterThree.command == True:
+        character_selected = "images/Character_Three.png"
+        exec(open('before_capture_alien.py').read())
+    #if(nextScene):
+        #exec(open('before_capture_alien.py').read())
  
     render()
     characterOne.check_hover()
