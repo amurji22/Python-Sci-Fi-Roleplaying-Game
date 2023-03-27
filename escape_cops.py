@@ -3,6 +3,9 @@ import random
 
 pygame.init()
 
+clock = pygame.time.Clock()
+fps = 60
+
 # create screen
 screen = pygame.display.set_mode((1200, 768))
 
@@ -45,16 +48,54 @@ def render():
 cops_passed_counter = 50
 cop_speed = (0, 2)
 cop_x = 2
+#create Explosion class
+class Explosion(pygame.sprite.Sprite):
+	def __init__(self, x, y):
+		pygame.sprite.Sprite.__init__(self)
+		self.images = []
+		for num in range(1, 6):
+			img = pygame.image.load(f"Explosion_Images/exp{num}.png")
+			img = pygame.transform.scale(img, (100, 100))
+			self.images.append(img)
+		self.index = 0
+		self.image = self.images[self.index]
+		self.rect = self.image.get_rect()
+		self.rect.center = [x, y]
+		self.counter = 0
 
+	def update(self):
+		explosion_speed = 4
+		#update explosion animation
+		self.counter += 1
+
+		if self.counter >= explosion_speed and self.index < len(self.images) - 1:
+			self.counter = 0
+			self.index += 1
+			self.image = self.images[self.index]
+
+		#if the animation is complete, reset animation index
+		if self.index >= len(self.images) - 1 and self.counter >= explosion_speed:
+			self.kill()
+
+explosion_group = pygame.sprite.Group()
 
 running = True
 # game loop
 while running:
+
+    clock.tick(fps)
+    
+
+    explosion_group.draw(screen)
+    explosion_group.update()
     # event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
+        if event.type == pygame.MOUSEBUTTONDOWN: 
+            pos = pygame.mouse.get_pos()
+            explosion = Explosion(pos[0], pos[1])
+            explosion_group.add(explosion)
 
     # cops move downward
     cop1_rect = cop1_rect.move(cop_speed)
@@ -81,18 +122,30 @@ while running:
     # if all cops are escaped
     if (cops_passed_counter == 0):
         # open end file
-        exec(open("successful_escape.py").read())
+        exec(open("").read())
 
    # detect collision between ship and cops
     if ship_rect.colliderect(cop1_rect):
+        explosion = Explosion(ship_rect.x, ship_rect.y)
+        explosion_group.add(explosion)
+        time.sleep(5)
+        running = False
         # open the scene to bargain or fight with cop
-        exec(open("").read())
+        #exec(open("").read())
     if ship_rect.colliderect(cop2_rect):
+        explosion = Explosion(ship_rect.x, ship_rect.y)
+        explosion_group.add(explosion)
+        time.sleep(5)
+        running = False
         # open the scene to bargain or fight with cop
-        exec(open("").read())
+        #exec(open("").read())
     if ship_rect.colliderect(cop3_rect):
+        explosion = Explosion(ship_rect.x, ship_rect.y)
+        explosion_group.add(explosion)
+        time.sleep(5)
+        running = False
         # open the scene to bargain or fight with cop
-        exec(open("").read())
+        #exec(open("").read())
 
 
     
@@ -104,7 +157,7 @@ while running:
         ship_rect = ship_rect.move(3.5,0)
 
     
-      
+    pygame.display.update()
     time.sleep(0.001)
     render()
 
