@@ -3,6 +3,9 @@ import random
 
 pygame.init()
 
+clock = pygame.time.Clock()
+fps = 60
+
 # create screen
 screen = pygame.display.set_mode((1200, 768))
 
@@ -15,7 +18,7 @@ ship_img = pygame.image.load("spaceship.png")
 ship_rect = ship_img.get_rect()
 # move ship to the bottom middle of screen
 ship_rect.x = screen.get_width() / 2 - 100
-ship_rect.y = screen.get_height() - 120
+ship_rect.y = screen.get_height() / 2 
 
 # load the cops
 cop1_img = pygame.image.load("cop_ship.png")
@@ -45,15 +48,64 @@ def render():
 cops_passed_counter = 50
 cop_speed = (0, 2)
 cop_x = 2
+#create Explosion class
+class Explosion(pygame.sprite.Sprite):
+	def __init__(self, x, y):
+		pygame.sprite.Sprite.__init__(self)
+		self.images = []
+		for num in range(1, 6):
+			img = pygame.image.load(f"Explosion_Images/exp{num}.png")
+			img = pygame.transform.scale(img, (100, 100))
+			self.images.append(img)
+		self.index = 0
+		self.image = self.images[self.index]
+		self.rect = self.image.get_rect()
+		self.rect.center = [x, y]
+		self.counter = 0
+
+	def update(self):
+		explosion_speed = 4
+		#update explosion animation
+		self.counter += 1
+
+		if self.counter >= explosion_speed and self.index < len(self.images) - 1:
+			self.counter = 0
+			self.index += 1
+			self.image = self.images[self.index]
+
+		#if the animation is complete, reset animation index
+		if self.index >= len(self.images) - 1 and self.counter >= explosion_speed:
+			self.kill()
+
+explosion_group = pygame.sprite.Group()
 
 running = True
 # game loop
 while running:
+
+    clock.tick(fps)
+    
+
+    explosion_group.draw(screen)
+    explosion_group.update()
     # event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
+        if event.type == pygame.MOUSEBUTTONDOWN: 
+            pos = pygame.mouse.get_pos()
+            explosion = Explosion(pos[0], pos[1])
+            explosion_group.add(explosion)
+            x, y = pos
+            if cop1_rect.collidepoint(x, y):
+                cop1_rect.center = (random.randint(50,300), 0)
+                cops_passed_counter -= 10
+            if cop2_rect.collidepoint(x, y):
+                cop2_rect.center = (random.randint(350,900), 0)
+                cops_passed_counter -= 10
+            if cop3_rect.collidepoint(x, y):
+                cop3_rect.center = (random.randint(950,1100), 0)
+                cops_passed_counter -= 10
 
     # cops move downward
     cop1_rect = cop1_rect.move(cop_speed)
@@ -98,11 +150,16 @@ while running:
     keys = pygame.key.get_pressed()
     # make sure the user does not move the bank off the screen
     if keys[pygame.K_LEFT] and ship_rect.x > 0:
-        ship_rect = ship_rect.move(-3.5,0)
+            ship_rect = ship_rect.move(-3.5,0)
     if keys[pygame.K_RIGHT] and ship_rect.x < 1020:
-        ship_rect = ship_rect.move(3.5,0)
+            ship_rect = ship_rect.move(3.5,0)
+    if keys[pygame.K_UP] and ship_rect.y > 0:
+            ship_rect = ship_rect.move(0,-3.5)
+    if keys[pygame.K_DOWN] and ship_rect.y < 660:
+            ship_rect = ship_rect.move(0,3.5)    
 
     
+    pygame.display.update()
     time.sleep(0.001)
     render()
 
