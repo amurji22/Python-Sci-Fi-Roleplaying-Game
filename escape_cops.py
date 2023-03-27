@@ -81,7 +81,7 @@ while running:
     # if all cops are escaped
     if (cops_passed_counter == 0):
         # open end file
-        exec(open("").read())
+        exec(open("successful_escape.py").read())
 
    # detect collision between ship and cops
     if ship_rect.colliderect(cop1_rect):
