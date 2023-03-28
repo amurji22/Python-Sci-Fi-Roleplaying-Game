@@ -1,18 +1,17 @@
 import pygame, time
 import gameElements
+from characterSelectionMenu import character_selected
 
 pygame.init()
 
-bg_img = pygame.image.load('town_background.png')
+bg_img = pygame.image.load('images/town_background.png')
 bg_rect = bg_img.get_rect()
 
 screen_width = 1200
 screen_height = 740
 screen = pygame.display.set_mode((screen_width, screen_height))
 
-clock = pygame.time.Clock()
-
-player = gameElements.Character("Character_One.png", screen_width, screen_height, scale=0.5, speed=200)
+player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=200)
 
 # render function
 def render():

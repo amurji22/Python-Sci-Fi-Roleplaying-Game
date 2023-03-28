@@ -1,5 +1,5 @@
 import pygame
-
+from characterSelectionMenu import character_selected
 
 pygame.init()
 
@@ -8,7 +8,7 @@ screen = pygame.display.set_mode((1200, 740))
 screen_rect = screen.get_rect()
 
 # load the background and create its rect
-bg_img = pygame.image.load("before_capture_background.jpg")
+bg_img = pygame.image.load("images/before_capture_background.jpg")
 bg_rect = bg_img.get_rect()
 
 
