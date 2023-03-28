@@ -32,6 +32,24 @@ cop1_rect.x = 100
 cop2_rect.x = 1000
 cop3_rect.x = 550
 
+# load the Roated cops coming from the bottom 
+cop4_img = pygame.image.load("cop_ship_rotatated.png")
+cop5_img = pygame.image.load("cop_ship_rotatated.png")
+cop6_img = pygame.image.load("cop_ship_rotatated.png")
+cop4_rect = cop4_img.get_rect()
+cop5_rect = cop5_img.get_rect()
+cop6_rect = cop6_img.get_rect()
+# set the starting positions of the cops
+cop4_rect.x = 100
+cop5_rect.x = 1000
+cop6_rect.x = 550
+#Start from the bottom
+cop4_rect.y = 700
+cop5_rect.y = 700
+cop6_rect.y = 700
+
+
+
 # render function
 def render():
     screen.blit(bg_img, bg_rect)
@@ -41,12 +59,17 @@ def render():
     screen.blit(cop2_img, cop2_rect)
     screen.blit(cop3_img, cop3_rect)
 
+    screen.blit(cop4_img, cop4_rect)
+    screen.blit(cop5_img, cop5_rect)
+    screen.blit(cop6_img, cop6_rect)
+
     pygame.display.flip()
 
 
 
 cops_passed_counter = 50
 cop_speed = (0, 2)
+cop_speed_up = (0,-2)
 cop_x = 2
 #create Explosion class
 class Explosion(pygame.sprite.Sprite):
@@ -99,18 +122,26 @@ while running:
             x, y = pos
             if cop1_rect.collidepoint(x, y):
                 cop1_rect.center = (random.randint(50,300), 0)
-                cops_passed_counter -= 10
             if cop2_rect.collidepoint(x, y):
                 cop2_rect.center = (random.randint(350,900), 0)
-                cops_passed_counter -= 10
             if cop3_rect.collidepoint(x, y):
                 cop3_rect.center = (random.randint(950,1100), 0)
-                cops_passed_counter -= 10
+            if cop4_rect.collidepoint(x, y):
+                cop4_rect.center = (random.randint(50,300), 700)
+            if cop5_rect.collidepoint(x, y):
+                cop5_rect.center = (random.randint(350,900), 700)
+            if cop6_rect.collidepoint(x, y):
+                cop6_rect.center = (random.randint(950,1100), 700)
+            
 
     # cops move downward
     cop1_rect = cop1_rect.move(cop_speed)
     cop2_rect = cop2_rect.move(cop_speed)
     cop3_rect = cop3_rect.move(cop_speed)
+    # cops move up
+    cop4_rect = cop4_rect.move(cop_speed_up)
+    cop5_rect = cop5_rect.move(cop_speed_up)
+    cop6_rect = cop6_rect.move(cop_speed_up)
     # cops respawns at top of screen if it goes out at bottom
     if cop1_rect.y > screen.get_rect().height:
         cop1_rect.center = (random.randint(50,300), 0)
@@ -119,29 +150,34 @@ while running:
         cop2_rect.center = (random.randint(350,900), 0)
     if cop3_rect.y > screen.get_rect().height:
         cop3_rect.center = (random.randint(950,1100), 0)
+    # cops respawns at bottom of the screen if it goes out at the top
+    if cop4_rect.y < 0:
+        cop4_rect.center = (random.randint(50,300), 700)
+    if cop5_rect.y < 0:
+        cops_passed_counter -= 1
+        cop5_rect.center = (random.randint(350,900), 700)
+    if cop6_rect.y < 0:
+        cop6_rect.center = (random.randint(950,1100), 700)
 
     # activate second level,  increase speed of cops
     if (cops_passed_counter == 40):
         cop_speed = (0, 3)
+        cop_speed_up = (0, -3)
     # activate third level, increase speed of cops
     if (cops_passed_counter == 30):
         cop_speed = (0, 4)
+        cop_speed_up = (0, -4)
     # activate fourth level, increase speed of cops
     if (cops_passed_counter == 20):
         cop_speed = (0, 5)
+        cop_speed_up = (0, -5)
     # if all cops are escaped
     if (cops_passed_counter == 0):
         # open end file
         exec(open("").read())
 
    # detect collision between ship and cops
-    if ship_rect.colliderect(cop1_rect):
-        # open the scene to bargain or fight with cop
-        exec(open("").read())
-    if ship_rect.colliderect(cop2_rect):
-        # open the scene to bargain or fight with cop
-        exec(open("").read())
-    if ship_rect.colliderect(cop3_rect):
+    if ship_rect.colliderect(cop1_rect) or  ship_rect.colliderect(cop2_rect) or ship_rect.colliderect(cop3_rect) or ship_rect.colliderect(cop4_rect) or ship_rect.colliderect(cop5_rect) or ship_rect.colliderect(cop6_rect):
         # open the scene to bargain or fight with cop
         exec(open("").read())
 
