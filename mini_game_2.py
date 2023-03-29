@@ -77,6 +77,8 @@ def draw():
         screen.blit(heart_2, heart_2_rect)
     elif hearts_lost == 2:
         screen.blit(heart_1, heart_1_rect)
+    elif hearts_lost == 3:
+        exec(open("").read())
 
 def move():
     if keys[pygame.K_RIGHT]:
@@ -95,7 +97,7 @@ def Player_Border():
         Player.x = 6
 
 def makeFastAsteroid():
-    fast_asteroid_rect.center = (random.randint(5,795),0)
+    fast_asteroid_rect.center = (random.randint(10,790),0)
     fast_asteroid_speed = 10
 
 
