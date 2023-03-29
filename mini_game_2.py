@@ -126,7 +126,7 @@ out_of_bounds = False
 
 # flip_asteroid = False
 
-points_till_fast_asteroid = random.randint(1,4)
+points_till_fast_asteroid = random.randint(1,3)
 
 
 while True:
@@ -141,7 +141,7 @@ while True:
         fast_asteroid_speed = 10
         makeFastAsteroid()
         points_earned = 0
-        points_till_fast_asteroid = random.randint(1,4)
+        points_till_fast_asteroid = random.randint(1,3)
         out_of_bounds = False
         make_asteroid_move = True
 
