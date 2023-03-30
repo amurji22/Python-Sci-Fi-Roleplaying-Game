@@ -18,13 +18,13 @@ Speed = 5
 asteroid_x = 5
 asteroid_y = 5
 
-asteroid_img = pygame.image.load("asteroid.png")
-heart_1 = pygame.image.load("heart.png")
-heart_2 = pygame.image.load("heart.png")
-heart_3 = pygame.image.load("heart.png")
+asteroid_img = pygame.image.load("images/asteroid.png")
+heart_1 = pygame.image.load("images/heart.png")
+heart_2 = pygame.image.load("images/heart.png")
+heart_3 = pygame.image.load("images/heart.png")
 
 # create the background and its rect object
-bg_img = pygame.image.load("mini_game_2_background.jpg")
+bg_img = pygame.image.load("images/mini_game_2_background.jpg")
 bg_rect = bg_img.get_rect()
 
 Player = pygame.Rect(375,750, 150, 18)

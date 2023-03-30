@@ -7,7 +7,7 @@ pygame.init()
 screen = pygame.display.set_mode((1200, 740))
 
 # load the background and create its rect
-bg_img = pygame.image.load("success_background.jpg")
+bg_img = pygame.image.load("images/success_background.jpg")
 bg_rect = bg_img.get_rect()
 
 # render
