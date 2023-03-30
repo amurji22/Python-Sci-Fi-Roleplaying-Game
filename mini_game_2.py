@@ -22,12 +22,12 @@ asteroid_y = 5
 fast_asteroid_speed = 10
 
 #import images
-asteroid_img = pygame.image.load("asteroid.png")
-og_fast_asteroid_img = pygame.image.load("flaming_asteroid.png")
-heart_1 = pygame.image.load("heart.png")
-heart_2 = pygame.image.load("heart.png")
-heart_3 = pygame.image.load("heart.png")
-bg_img = pygame.image.load("mini_game_2_background.jpg")
+asteroid_img = pygame.image.load("images/asteroid.png")
+og_fast_asteroid_img = pygame.image.load("images/flaming_asteroid.png")
+heart_1 = pygame.image.load("images/heart.png")
+heart_2 = pygame.image.load("images/heart.png")
+heart_3 = pygame.image.load("images/heart.png")
+bg_img = pygame.image.load("images/mini_game_2_background.jpg")
 
 #rectangles
 Player = pygame.Rect(375,750, 150, 18)

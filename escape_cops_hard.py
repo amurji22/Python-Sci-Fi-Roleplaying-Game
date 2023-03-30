@@ -10,20 +10,20 @@ fps = 60
 screen = pygame.display.set_mode((1200, 768))
 
 # load the background and create its rect
-bg_img = pygame.image.load("escape_background.jpg")
+bg_img = pygame.image.load("images/escape_background.jpg")
 bg_rect = bg_img.get_rect()
 
 # load the spaceship
-ship_img = pygame.image.load("spaceship.png")
+ship_img = pygame.image.load("images/spaceship.png")
 ship_rect = ship_img.get_rect()
 # move ship to the bottom middle of screen
 ship_rect.x = screen.get_width() / 2 - 100
 ship_rect.y = screen.get_height() / 2 
 
 # load the cops
-cop1_img = pygame.image.load("cop_ship.png")
-cop2_img = pygame.image.load("cop_ship.png")
-cop3_img = pygame.image.load("cop_ship.png")
+cop1_img = pygame.image.load("images/cop_ship.png")
+cop2_img = pygame.image.load("images/cop_ship.png")
+cop3_img = pygame.image.load("images/cop_ship.png")
 cop1_rect = cop1_img.get_rect()
 cop2_rect = cop2_img.get_rect()
 cop3_rect = cop3_img.get_rect()
@@ -33,9 +33,9 @@ cop2_rect.x = 1000
 cop3_rect.x = 550
 
 # load the Roated cops coming from the bottom 
-cop4_img = pygame.image.load("cop_ship_rotatated.png")
-cop5_img = pygame.image.load("cop_ship_rotatated.png")
-cop6_img = pygame.image.load("cop_ship_rotatated.png")
+cop4_img = pygame.image.load("images/cop_ship_rotatated.png")
+cop5_img = pygame.image.load("images/cop_ship_rotatated.png")
+cop6_img = pygame.image.load("images/cop_ship_rotatated.png")
 cop4_rect = cop4_img.get_rect()
 cop5_rect = cop5_img.get_rect()
 cop6_rect = cop6_img.get_rect()
