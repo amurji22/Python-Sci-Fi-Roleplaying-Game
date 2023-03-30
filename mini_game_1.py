@@ -3,7 +3,7 @@ import pygame, random, time
 pygame.init()
 
 screen = pygame.display.set_mode((1200, 800))
-pygame.display.set_caption("Mini Game 1 Snake Game ")
+pygame.display.set_caption("Mini Game 1 Snake Game")
 
 star_image = pygame.image.load("images/star.png")
 # -- get its rect object
