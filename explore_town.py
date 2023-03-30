@@ -7,16 +7,19 @@ pygame.init()
 bg_img = pygame.image.load('images/town_background.png')
 bg_rect = bg_img.get_rect()
 
+sign_img = pygame.image.load("sign_filled.png")
+
 screen_width = 1200
 screen_height = 740
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Explore the Space Town")
 
-player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=200)
+player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=300)
 
 # render function
 def render():
     screen.blit(bg_img, bg_rect)
+    screen.blit(sign_img, (500, 400))
     screen.blit(player.image, player.rect)
 
 render()
