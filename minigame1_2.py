@@ -4,21 +4,26 @@ from characterSelectionMenu import character_selected
 
 pygame.init()
 
-bg_img = pygame.image.load('images/space_background.jpg')
+bg_img = pygame.image.load('town_background.jpg')
 bg_rect = bg_img.get_rect()
+
+sign_img = pygame.image.load("small_sign_one.png")
 
 screen_width = 1200
 screen_height = 740
 screen = pygame.display.set_mode((screen_width, screen_height))
 
-player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=200)
-exitButton = gameElements.Button('images/Exit.png',(173,75),90,50,12,2, screen)
+backBtn = gameElements.Button('back_button.png',(180,100),100, 80, 10, 20, screen)
+
+player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=300)
 
 # render function
 def render():
     screen.blit(bg_img, bg_rect)
+    backBtn.check_hover()
+    screen.blit(sign_img, (500, 400))
     screen.blit(player.image, player.rect)
-    exitButton.check_hover()
+    
 
 render()
 
@@ -62,10 +67,11 @@ while running:
         player.rect.x = round(player.rect_posx)
     elif move_right and player.rect.right >= player.screen_width:
         player.rect.x = player.screen_width - player.rect.width
-        exec(open('minigame2_startscreen.py').read())
-    
-    if exitButton.command == True:
+        exec(open('mini_game_2.py').read())
+
+    if backBtn.command == True:
         exec(open('explore_town.py').read())
+        backBtn.command = False
 
     render()
     pygame.display.flip()
