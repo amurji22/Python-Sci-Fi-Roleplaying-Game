@@ -22,7 +22,7 @@ while running:
             running = False
 
     if startButton.command == True:
-        exec(open('characterSelectionMenu.py').read())
+        exec(open('before_capture_alien.py').read())
         startButton.command = False
     elif exitButton.command == True:
         running = False
