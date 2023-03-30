@@ -13,7 +13,7 @@ screen_width = 1200
 screen_height = 740
 screen = pygame.display.set_mode((screen_width, screen_height))
 
-backBtn = gameElements.Button('back_button.png',(180,100),100, 80, 10, 20, screen)
+backBtn = gameElements.Button('back_button.png',(180,100),100, 80, 20, 10, screen)
 
 player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=300)
 
@@ -60,14 +60,14 @@ while running:
         player.rect.x = round(player.rect_posx)
     elif move_left and player.rect.left <= 0:
         player.rect.x = 0
-        exec(open('mini_game_1.py').read())
+        exec(open('minigame2_startscreen.py').read())
 
     if move_right and player.rect.right < player.screen_width:
         player.rect_posx += player.speed * delta_time
         player.rect.x = round(player.rect_posx)
     elif move_right and player.rect.right >= player.screen_width:
         player.rect.x = player.screen_width - player.rect.width
-        exec(open('mini_game_2.py').read())
+        exec(open('mini_game_1.py').read())
 
     if backBtn.command == True:
         exec(open('explore_town.py').read())
