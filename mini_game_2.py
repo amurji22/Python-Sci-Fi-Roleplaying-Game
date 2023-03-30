@@ -78,7 +78,7 @@ def draw():
     elif hearts_lost == 2:
         screen.blit(heart_1, heart_1_rect)
     elif hearts_lost == 3:
-        exec(open("").read())
+        exec(open("minigame1_2.py").read())
 
 def move():
     if keys[pygame.K_RIGHT]:

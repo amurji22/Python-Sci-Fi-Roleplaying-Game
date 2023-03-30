@@ -12,11 +12,13 @@ screen_height = 740
 screen = pygame.display.set_mode((screen_width, screen_height))
 
 player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=200)
+exitButton = gameElements.Button('images/Exit.png',(173,75),90,50,12,2, screen)
 
 # render function
 def render():
     screen.blit(bg_img, bg_rect)
     screen.blit(player.image, player.rect)
+    exitButton.check_hover()
 
 render()
 
@@ -60,7 +62,10 @@ while running:
         player.rect.x = round(player.rect_posx)
     elif move_right and player.rect.right >= player.screen_width:
         player.rect.x = player.screen_width - player.rect.width
-        exec(open('mini_game_2.py').read())
+        exec(open('minigame2_startscreen.py').read())
+    
+    if exitButton.command == True:
+        exec(open('explore_town.py').read())
 
     render()
     pygame.display.flip()

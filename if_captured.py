@@ -11,8 +11,8 @@ bg_img = pygame.image.load("if_captured_background.jpg")
 bg_rect = bg_img.get_rect()
 
 # create the button objects
-bribeBtn = gameElements.Button('bribe_button.png',(225, 500), 125, 100, 10, 20, screen)
-fightBtn = gameElements.Button('fight_button.png',(975, 500), 125, 100, 10, 20, screen)
+bribeBtn = gameElements.Button('bribe_button.png',(225, 500), 125, 100, 20, 10, screen)
+fightBtn = gameElements.Button('fight_button.png',(975, 500), 125, 100, 20, 10, screen)
 
 # render function
 def render():
@@ -31,7 +31,7 @@ while running:
             running = False
 
     if bribeBtn.command == True:
-        exec(open('').read())
+        exec(open('bribe_scene.py').read())
         bribeBtn.command = False
     elif fightBtn.command == True:
         exec(open('').read())

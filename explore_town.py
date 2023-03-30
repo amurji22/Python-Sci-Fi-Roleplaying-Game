@@ -54,14 +54,14 @@ while running:
         player.rect.x = round(player.rect_posx)
     elif move_left and player.rect.left <= 0:
         player.rect.x = 0
-        exec(open('minigame_choice_1.py').read())
+        exec(open('minigame3_scrapyard.py').read())
 
     if move_right and player.rect.right < player.screen_width:
         player.rect_posx += player.speed * delta_time
         player.rect.x = round(player.rect_posx)
     elif move_right and player.rect.right >= player.screen_width:
         player.rect.x = player.screen_width - player.rect.width
-        exec(open('minigame_choice_2.py').read())
+        exec(open('minigame1_2.py').read())
 
     render()
     pygame.display.flip()
