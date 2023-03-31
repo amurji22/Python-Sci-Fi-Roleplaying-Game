@@ -67,7 +67,7 @@ while running:
         player.rect.x = round(player.rect_posx)
     elif move_right and player.rect.right >= player.screen_width:
         player.rect.x = player.screen_width - player.rect.width
-        exec(open('mini_game_1.py').read())
+        exec(open('minigame1_startscreen.py').read())
 
     if backBtn.command == True:
         exec(open('explore_town.py').read())
