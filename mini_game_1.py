@@ -1,4 +1,5 @@
 import pygame, random, time
+import gameElements
 
 pygame.init()
 
@@ -43,6 +44,7 @@ def snake():
     score = font.render("Score: "+ str(len(body_list)), True, (255, 255, 0))
     screen.blit(score, [0, 0])
     if len(body_list) == 10:
+        gameElements.minigame_1_complete = True
         print("Done")
         exec(open('minigame1_win.py').read()) 
     #pygame.draw.rect(screen, (255, 0, 0), [food_x,food_y, 50, 50])

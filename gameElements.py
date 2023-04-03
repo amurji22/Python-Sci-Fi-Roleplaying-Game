@@ -144,6 +144,10 @@ class Character:
         self.rect_posx = self.rect.x
 
 minigame_2_complete = False
+
+minigame_1_complete = False
+
+minigame_3_complete = False
         
         
 
