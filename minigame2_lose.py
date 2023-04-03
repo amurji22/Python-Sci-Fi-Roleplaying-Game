@@ -1,5 +1,6 @@
 import pygame, time
 import gameElements
+from characterSelectionMenu import character_selected
         
 pygame.init()
 
@@ -22,7 +23,7 @@ while running:
             running = False
 
     if exitButton.command == True:
-        exec(open('explore_town.py').read())
+        exec(open('minigame1_2.py').read())
         exitButton.command = False
 
     screen.blit(bg_img, bg_rect)

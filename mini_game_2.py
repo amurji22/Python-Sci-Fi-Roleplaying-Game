@@ -1,4 +1,6 @@
 import pygame, random
+import gameElements
+from characterSelectionMenu import character_selected
 
 pygame.init()
 
@@ -14,6 +16,9 @@ White = (255,255,255)
 Gray = (169,169,169)
 Red = (255,0,0)
 boxColour = Black
+
+green = (0, 255, 0)
+blue = (0, 0, 128)
 
 #game element speeds
 Speed = 5
@@ -59,6 +64,13 @@ flipped_fast_asteroid_rect = flipped_fast_asteroid.get_rect()
 
 resized_asteroid_rect.center = (385,285)
 
+#create text
+final_points_earned = 0
+font = pygame.font.Font('PublicPixel-z84yD.ttf', 32)
+text = font.render(str(final_points_earned), True, green, blue)
+textRect = text.get_rect()
+textRect.center = (650,35)
+
 
 def draw():
     FPS.tick(60)
@@ -67,6 +79,9 @@ def draw():
     pygame.draw.rect(screen, White, Player)
 
     screen.blit(resized_asteroid_img, resized_asteroid_rect)
+
+    screen.blit(text, textRect)
+
 
     if hearts_lost == 0:
         screen.blit(heart_1, heart_1_rect)
@@ -78,7 +93,7 @@ def draw():
     elif hearts_lost == 2:
         screen.blit(heart_1, heart_1_rect)
     elif hearts_lost == 3:
-        exec(open("minigame1_2.py").read())
+        exec(open("minigame2_lose.py").read())
 
 def move():
     if keys[pygame.K_RIGHT]:
@@ -104,6 +119,7 @@ def makeFastAsteroid():
 def moveFastAsteroid():
     fast_asteroid_rect.y += fast_asteroid_speed
     screen.blit(fast_asteroid, fast_asteroid_rect)
+
     # if flip_asteroid == False:
     #     fast_asteroid_rect.y += fast_asteroid_speed
     #     screen.blit(fast_asteroid, fast_asteroid_rect)
@@ -111,20 +127,12 @@ def moveFastAsteroid():
     #     flipped_fast_asteroid_rect.center = fast_asteroid_rect.center
     #     flipped_fast_asteroid_rect.y += fast_asteroid_speed
     #     screen.blit(flipped_fast_asteroid, flipped_fast_asteroid_rect)
-   
-
-    
-
 
 hearts_lost = 0
-
 points_earned = 0
 
 make_asteroid_move = False
-
 out_of_bounds = False
-
-# flip_asteroid = False
 
 points_till_fast_asteroid = random.randint(1,3)
 
@@ -137,6 +145,9 @@ while True:
     resized_asteroid_rect.x += asteroid_x
     resized_asteroid_rect.y += asteroid_y
 
+    if final_points_earned == 20:
+        exec(open("minigame2_win.py").read())
+
     if points_earned == points_till_fast_asteroid:
         fast_asteroid_speed = 10
         makeFastAsteroid()
@@ -148,7 +159,7 @@ while True:
     if fast_asteroid_rect.colliderect(Player) and out_of_bounds == False:
         fast_asteroid_speed *= -1
         Speed += 0.8
-        # flip_asteroid = True
+        final_points_earned += 1 
     elif fast_asteroid_rect.colliderect(missedPointBox):
         boxColour = Red
         hearts_lost += 1 
@@ -161,6 +172,7 @@ while True:
         asteroid_y *= -1
         Speed += 0.8
         points_earned += 1
+        final_points_earned += 1 
     elif resized_asteroid_rect.colliderect(missedPointBox):
         asteroid_y *= -1
         boxColour = Red
@@ -180,6 +192,10 @@ while True:
         
 
     keys = pygame.key.get_pressed()
+
+    text = font.render("Score:" +  str(final_points_earned), True, White, Black)
+    textRect = text.get_rect()
+    textRect.center = (665,40)
 
     draw()
 
