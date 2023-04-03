@@ -143,11 +143,11 @@ class Character:
         self.screen_height = y
         self.rect_posx = self.rect.x
 
-minigame_2_complete = False
+minigame_2_complete = True
 
-minigame_1_complete = False
+minigame_1_complete = True
 
-minigame_3_complete = False
+minigame_3_complete = True
         
         
 

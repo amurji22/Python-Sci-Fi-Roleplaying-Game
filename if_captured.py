@@ -34,7 +34,7 @@ while running:
         exec(open('bribe_scene.py').read())
         bribeBtn.command = False
     elif fightBtn.command == True:
-        exec(open('').read())
+        exec(open('fight_cops.py').read())
         fightBtn.command = False
 
     render()
