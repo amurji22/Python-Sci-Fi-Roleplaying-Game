@@ -146,6 +146,7 @@ while True:
     resized_asteroid_rect.y += asteroid_y
 
     if final_points_earned == 20:
+        gameElements.minigame_2_complete = True
         exec(open("minigame2_win.py").read())
 
     if points_earned == points_till_fast_asteroid:

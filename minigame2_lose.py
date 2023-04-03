@@ -1,6 +1,5 @@
 import pygame, time
 import gameElements
-from characterSelectionMenu import character_selected
         
 pygame.init()
 

@@ -142,6 +142,8 @@ class Character:
         self.screen_width = x
         self.screen_height = y
         self.rect_posx = self.rect.x
+
+minigame_2_complete = False
         
         
 

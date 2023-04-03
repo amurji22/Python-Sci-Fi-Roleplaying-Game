@@ -24,6 +24,8 @@ def render():
 
 render()
 
+
+
 #arrow key move variables
 move_left = False
 move_right = False

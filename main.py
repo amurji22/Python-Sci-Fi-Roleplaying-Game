@@ -23,7 +23,7 @@ while running:
 
     if startButton.command == True:
         exec(open('before_capture_alien.py').read())
-        startButton.command = False
+        startButton.command = False    
     elif exitButton.command == True:
         running = False
         exitButton.command = False
