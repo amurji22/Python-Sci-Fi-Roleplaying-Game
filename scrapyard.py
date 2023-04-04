@@ -78,21 +78,18 @@ while running:
         player.rect.x = round(player.rect_posx)
     elif move_right and player.rect.right >= player.screen_width:
         player.rect.x = player.screen_width - player.rect.width
-        if gameElements.minigame_1_complete and gameElements.minigame_2_complete and gameElements.minigame_3_complete:
-            exec(open('scrapyard_success.py').read())
-        else:
-            exec(open('scrapyard_lose.py').read())
 
     if backBtn.command == True:
         exec(open('explore_town.py').read())
         backBtn.command = False
     if buildBtn.command == True:
         if gameElements.minigame_1_complete and gameElements.minigame_2_complete and gameElements.minigame_3_complete:
-            exec(open('escape_cops_hard.py').read())
+            exec(open('scrapyard_success.py').read())
             buildBtn.command = False
         else:
-            game_status = "All three games need to be complete before proceeding"
+            game_status = "You must win all three games to collect the spaceship parts you need to continue"
             buildBtn.command = False
+            #bug here that player can't leave if they haven't completed all games
             
 
     render()

@@ -143,11 +143,28 @@ class Character:
         self.screen_height = y
         self.rect_posx = self.rect.x
 
-minigame_2_complete = False
+# character_one_chosen = False
+
+# character_two_chosen = False
+
+# character_three_chosen = False
+
+# def characterSelection():
+#     if character_one_chosen:
+#         character_selected = "images/Character_One.png"
+#         return character_selected
+#     elif character_two_chosen:
+#         character_selected = "images/Character_Two.png"
+#         return character_selected
+#     elif character_three_chosen:
+#         character_selected = "images/Character_Three.png"
+#         return character_selected
 
 minigame_1_complete = False
 
-minigame_3_complete = True
+minigame_2_complete = False
+
+minigame_3_complete = False
         
 shield_power = False
         
