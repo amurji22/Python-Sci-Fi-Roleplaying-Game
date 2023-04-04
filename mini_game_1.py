@@ -46,7 +46,7 @@ def snake():
     if len(body_list) == 10:
         gameElements.minigame_1_complete = True
         print("Done")
-        exec(open('minigame1_win.py').read()) 
+        exec(open('minigame3_win.py').read()) 
     #pygame.draw.rect(screen, (255, 0, 0), [food_x,food_y, 50, 50])
     screen.blit(star_image, (food_x,food_y, 50, 50))
     for (i,j) in body_list:
