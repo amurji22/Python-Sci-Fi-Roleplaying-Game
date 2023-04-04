@@ -25,7 +25,7 @@ while running:
         gameElements.minigame_2_complete = False
         gameElements.minigame_1_complete = False
         gameElements.minigame_3_complete = False
-        exec(open('explore_town.py').read())
+        exec(open('main.py').read())
         exitButton.command = False
 
     screen.blit(bg_img, bg_rect)
