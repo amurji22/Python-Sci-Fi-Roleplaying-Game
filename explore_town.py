@@ -7,7 +7,7 @@ pygame.init()
 bg_img = pygame.image.load('images/town_background.png')
 bg_rect = bg_img.get_rect()
 
-sign_img = pygame.image.load("sign_filled.png")
+sign_img = pygame.image.load("images/sign_filled.png")
 
 screen_width = 1200
 screen_height = 740

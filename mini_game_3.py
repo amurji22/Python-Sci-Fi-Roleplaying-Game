@@ -1,78 +1,94 @@
 import pygame
-import random
+import gameElements
 
-# Initialize Pygame
 pygame.init()
 
-# Set up the display
-screen_width = 640
-screen_height = 480
+# Set up the screen
+screen_width = 800
+screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Space Maze")
+pygame.display.set_caption("Space Squisher")
 
-# Set up game variables
-player_pos = [0, 0]
-maze_size = 20
-maze = [[random.randint(0, 1) for i in range(maze_size)] for j in range(maze_size)]
-obstacles = []
-powerups = []
-lives = 3
+# Set up the player
+player_width = 50
+player_height = 50
+player_x = 100
+player_y = screen_height - player_height - 50
+player_vel = 0
+player_acc = 0.5
+player_jump_vel = -10
+player = pygame.Rect(player_x, player_y, player_width, player_height)
 
-# Set up game functions
-def draw_maze():
-    for i in range(maze_size):
-        for j in range(maze_size):
-            if maze[i][j] == 1:
-                pygame.draw.rect(screen, (255, 255, 255), (j*20, i*20, 20, 20))
+# Set up the object
+object_width = 50
+object_height = 50
+object_x = screen_width
+object_y = screen_height - object_height
+object_speed = 5
+object = pygame.Rect(object_x, object_y, object_width, object_height)
 
-def draw_obstacles():
-    for obstacle in obstacles:
-        pygame.draw.circle(screen, (255, 0, 0), obstacle, 10)
+# Set up the score
+score = 0
+font = pygame.font.Font(None, 36)
 
-def draw_powerups():
-    for powerup in powerups:
-        pygame.draw.circle(screen, (0, 255, 0), powerup, 10)
+# Set up the clock
+clock = pygame.time.Clock()
 
-def move_player(dx, dy):
-    player_pos[0] += dx
-    player_pos[1] += dy
-
-def check_collision():
-    for obstacle in obstacles:
-        distance = ((player_pos[0]-obstacle[0])**2 + (player_pos[1]-obstacle[1])**2)**0.5
-        if distance < 20:
-            return True
-    return False
-
-# render function
-def render():
-    screen.fill((0, 0, 0))
-    draw_maze()
-    draw_obstacles()
-    draw_powerups()
-
-render()
-
-
-# Main game loop
-running = True
-while running:
+# Game loop
+while True:
     # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            pygame.quit()
+            quit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                move_player(0, -20)
-            elif event.key == pygame.K_DOWN:
-                move_player(0, 20)
-            elif event.key == pygame.K_LEFT:
-                move_player(-20, 0)
-            elif event.key == pygame.K_RIGHT:
-                move_player(20, 0)
-    
-    # Draw the game
-    render()
-    pygame.display.flip()
+            if event.key == pygame.K_SPACE and player.bottom == screen_height:
+                player_vel = player_jump_vel
 
-pygame.quit()
+    # Apply gravity to the player
+    player_vel += player_acc
+    player.y += player_vel
+
+    # Keep the player from falling through the bottom of the screen
+    if player.bottom > screen_height:
+        player.bottom = screen_height
+        player_vel = 0
+
+    # Move the object
+    object.x -= object_speed
+
+    # Check for collision
+    if player.colliderect(object):
+        if player.bottom <= object.top + 10:
+            score += 1
+            print(f"Jump successful! Score: {score}")
+            if score % 2 == 0:
+                object_speed *= 1.25
+                print(f"Speed doubled! New speed: {object_speed}")
+            object.x = screen_width
+            if score == 10:
+                gameElements.minigame_3_complete = True
+                print(f"You win!")
+                exec(open('minigame3_win.py').read())
+        else:
+            print(f"Collision detected! Final score: {score}")
+            exec(open('minigame3_lose.py').read())
+
+    # Reset the object if it reaches the left side of the screen
+    if object.right < 0:
+        object.x = screen_width
+
+    # Draw the player and object
+    screen.fill((0, 0, 0))
+    pygame.draw.rect(screen, (0, 0, 255), player)
+    pygame.draw.rect(screen, (255, 0, 0), object)
+
+    # Draw the score
+    score_text = font.render(f"Score: {score}", True, (255, 255, 255))
+    screen.blit(score_text, (10, 10))
+
+    # Update the display
+    pygame.display.update()
+
+    # Cap the frame rate
+    clock.tick(60)
