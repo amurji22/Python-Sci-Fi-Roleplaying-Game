@@ -8,7 +8,7 @@ bg_rect = bg_img.get_rect()
 
 screen = pygame.display.set_mode((1200, 768))
 screen_rect = screen.get_rect()
-pygame.display.set_caption("Minigame 1 and Minigame 2 Choice")
+pygame.display.set_caption("You Win!")
 
 exitButton = gameElements.Button('images/Big_Exit.png',(600, 484),130,75,20,4, screen)
 screen.blit(bg_img, bg_rect)

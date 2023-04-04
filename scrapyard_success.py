@@ -28,11 +28,11 @@ while running:
 
     if shieldButton.command == True:
         gameElements.shield_power = True
-        exec(open('escape_cops_hard.py').read())
+        exec(open('escape_cops_startscreen.py').read())
         shieldButton.command = False
     elif speedButton.command == True:
         gameElements.speed_power = True
-        exec(open('escape_cops_hard.py').read())
+        exec(open('escape_cops_startscreen.py').read())
         speedButton.command = False
 
     screen.blit(bg_img, bg_rect)

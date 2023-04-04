@@ -13,7 +13,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 
 backBtn = gameElements.Button('images/back_button.png',(180, 100),100, 80, 20, 10, screen)
 
-buildBtn = gameElements.Button("images/Start.png",(1000,100),100, 80, 20, 10, screen)
+buildBtn = gameElements.Button("images/Start.png",(900,100),100, 80, 20, 10, screen)
 
 player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=300)
 

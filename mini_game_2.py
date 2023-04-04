@@ -1,7 +1,6 @@
 import pygame, random, time
 import gameElements
 
-
 pygame.init()
 
 FPS = pygame.time.Clock()
@@ -98,7 +97,7 @@ def draw():
         screen.blit(msg, [800//3, 800//3])
         pygame.display.update()
         time.sleep(5)
-        exec(open("minigame1_lose.py").read())
+        exec(open("minigame2_lose.py").read())
 
 def move():
     if keys[pygame.K_RIGHT]:
