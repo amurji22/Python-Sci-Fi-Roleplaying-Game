@@ -45,18 +45,13 @@ while running:
         mainMenuButton.command = False
     elif characterOne.command == True:
         character_selected = "images/Character_One.png"
-        #gameElements.character_one_chosen = True
         exec(open('before_capture_alien.py').read())
     elif characterTwo.command == True:
         character_selected = "images/Character_Two.png"
-        #gameElements.character_two_chosen = True
         exec(open('before_capture_alien.py').read())
     elif characterThree.command == True:
         character_selected = "images/Character_Three.png"
-        #gameElements.character_three_chosen = True
         exec(open('before_capture_alien.py').read())
-    #if(nextScene):
-        #exec(open('before_capture_alien.py').read())
  
     render()
     characterOne.check_hover()

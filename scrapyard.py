@@ -80,7 +80,7 @@ while running:
         player.rect.x = player.screen_width - player.rect.width
 
     if backBtn.command == True:
-        exec(open('explore_town.py').read())
+        exec(open('minigame3_scrapyard.py').read())
         backBtn.command = False
     if buildBtn.command == True:
         if gameElements.minigame_1_complete and gameElements.minigame_2_complete and gameElements.minigame_3_complete:

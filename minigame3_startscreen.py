@@ -38,10 +38,10 @@ while running:
             running = False
 
     if startButton.command == True:
-        if gameElements.minigame_1_complete == False: 
+        if gameElements.minigame_3_complete == False: 
             exec(open('mini_game_3.py').read())
             startButton.command = False
-        elif gameElements.minigame_1_complete == True:
+        elif gameElements.minigame_3_complete == True:
             startButton.command = False
     elif exitButton.command == True:
         exec(open('minigame3_scrapyard.py').read())
