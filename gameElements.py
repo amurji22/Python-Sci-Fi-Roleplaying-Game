@@ -156,9 +156,11 @@ minigame_2_complete = True
 
 minigame_3_complete = True
         
-shield_power = False
-        
-speed_power = False
+ammo_power_up = False
+
+speed_power_up = False
+
+healer_power_up = False
 
 
 
