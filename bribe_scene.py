@@ -1,13 +1,13 @@
-import pygame
+import pygame, random
 import gameElements
-#from characterSelectionMenu import character_selected
+from characterSelectionMenu import character_selected
 
 # from escape_cops import alien_type
 
 pygame.init()
 
 #TEMPORARY CHARACTER ASSIGNMENT!!!!!
-character_selected = 'images/Character_One.png'
+#character_selected = 'images/Character_One.png'
 
 # create screen
 screen = pygame.display.set_mode((1200, 740))
@@ -18,6 +18,8 @@ bg_rect = bg_img.get_rect()
 
 #create exit button
 exitButton = gameElements.Button('images/Exit.png',(173,75),90,50,12,2, screen)
+#bribe button
+bribeBtn = gameElements.Button('images/bribe_button.png',(900,100), 125, 100, 20, 10, screen)
 
 #load the cop image and create its rect
 og_copImage = pygame.image.load("images/space_cop.png")
@@ -42,11 +44,11 @@ cop_rect = cop_img.get_rect()
 cop_rect.center = (400,470)
 character_rect.center = (800,470)
 
-
 # render
 def render():
     screen.blit(bg_img, bg_rect)
     exitButton.check_hover()
+    bribeBtn.check_hover()
     screen.blit(cop_img, cop_rect)
     screen.blit(character_img, character_rect)
     pygame.display.flip()
@@ -60,7 +62,18 @@ while running:
             running = False
     if exitButton.command == True:
         exec(open('if_captured.py').read())
-
+        exitButton.command = False
+    if bribeBtn.command == True:
+        #coin toss for bribe
+        result = random.choice(['Heads', 'Tails'])
+        # display the result
+        if result == 'Heads':
+            print("You win!")
+            exec(open('successful_escape.py').read())
+        else:
+            print("You lose!")
+            exec(open('exploded_ship.py').read())
+        bribeBtn.command = False
 
     render()
 

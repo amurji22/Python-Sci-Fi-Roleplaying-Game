@@ -32,7 +32,6 @@ while running:
             if event.key == pygame.K_SPACE:
                 exec(open('after_alien_capture.py').read())
 
-
     render()
 
 pygame.quit()

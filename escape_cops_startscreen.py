@@ -5,10 +5,10 @@ pygame.init()
 # create the screen and its rect object
 screen = pygame.display.set_mode((1200, 768))
 screen_rect = screen.get_rect()
-pygame.display.set_caption("Build Ship")
+pygame.display.set_caption("Escape Cops Startscreen")
 
 # load the background and create its rect
-bg_img = pygame.image.load('images/scrapyard_success_background.png')
+bg_img = pygame.image.load('images/escape_start_background.png')
 bg_rect = bg_img.get_rect()
 
 # render function
@@ -26,7 +26,7 @@ while running:
             # if the space bar is pressed, move to next scene
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                exec(open('escape_cops_startscreen.py').read())
+                exec(open('escape_cops_hard.py').read())
 
     render()
 

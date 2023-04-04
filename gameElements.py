@@ -160,11 +160,17 @@ class Character:
 #         character_selected = "images/Character_Three.png"
 #         return character_selected
 
-minigame_1_complete = False
+# minigame_1_complete = False
 
-minigame_2_complete = False
+# minigame_2_complete = False
 
-minigame_3_complete = False
+# minigame_3_complete = False
+
+minigame_1_complete = True
+
+minigame_2_complete = True
+
+minigame_3_complete = True
         
 shield_power = False
         
