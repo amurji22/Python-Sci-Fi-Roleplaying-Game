@@ -147,7 +147,7 @@ minigame_2_complete = False
 
 minigame_1_complete = False
 
-minigame_3_complete = False
+minigame_3_complete = True
         
 shield_power = False
         

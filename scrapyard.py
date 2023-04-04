@@ -13,13 +13,29 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 
 backBtn = gameElements.Button('images/back_button.png',(180, 100),100, 80, 20, 10, screen)
 
+buildBtn = gameElements.Button("images/Start.png",(1000,100),100, 80, 20, 10, screen)
+
 player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=300)
+
+Black = (0,0,0)
+White = (255,255,255)
+game_status = ''
+font = pygame.font.Font('PublicPixel-z84yD.ttf', 15)
+text = font.render(game_status, True, White)
+textRect = text.get_rect()
+textRect.center = (600,370)
 
 # render function
 def render():
     screen.blit(bg_img, bg_rect)
     backBtn.check_hover()
+    buildBtn.check_hover()
     screen.blit(player.image, player.rect)
+    text = font.render(game_status, True, White, Black)
+    textRect = text.get_rect()
+    textRect.center = (600,400)
+    screen.blit(text,textRect)
+    
 
 render()
 
@@ -70,6 +86,14 @@ while running:
     if backBtn.command == True:
         exec(open('explore_town.py').read())
         backBtn.command = False
+    if buildBtn.command == True:
+        if gameElements.minigame_1_complete and gameElements.minigame_2_complete and gameElements.minigame_3_complete:
+            exec(open('escape_cops_hard.py').read())
+            buildBtn.command = False
+        else:
+            game_status = "All three games need to be complete before proceeding"
+            buildBtn.command = False
+            
 
     render()
     pygame.display.flip()

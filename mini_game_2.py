@@ -1,6 +1,6 @@
-import pygame, random
+import pygame, random, time
 import gameElements
-from characterSelectionMenu import character_selected
+
 
 pygame.init()
 
@@ -93,7 +93,12 @@ def draw():
     elif hearts_lost == 2:
         screen.blit(heart_1, heart_1_rect)
     elif hearts_lost == 3:
-        exec(open("minigame2_lose.py").read())
+        screen.fill((0,0,0))
+        msg = font.render("GAME OVER!", True, (255, 255, 255))
+        screen.blit(msg, [800//3, 800//3])
+        pygame.display.update()
+        time.sleep(5)
+        exec(open("minigame1_lose.py").read())
 
 def move():
     if keys[pygame.K_RIGHT]:
