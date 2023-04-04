@@ -143,22 +143,6 @@ class Character:
         self.screen_height = y
         self.rect_posx = self.rect.x
 
-# character_one_chosen = False
-
-# character_two_chosen = False
-
-# character_three_chosen = False
-
-# def characterSelection():
-#     if character_one_chosen:
-#         character_selected = "images/Character_One.png"
-#         return character_selected
-#     elif character_two_chosen:
-#         character_selected = "images/Character_Two.png"
-#         return character_selected
-#     elif character_three_chosen:
-#         character_selected = "images/Character_Three.png"
-#         return character_selected
 
 # minigame_1_complete = False
 
