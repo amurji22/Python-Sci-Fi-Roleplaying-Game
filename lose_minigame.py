@@ -3,7 +3,7 @@ import gameElements
         
 pygame.init()
 
-bg_img = pygame.image.load('images/minigame3_lose_background.png')
+bg_img = pygame.image.load('images/lose_background.jpg')
 bg_rect = bg_img.get_rect()
 
 screen = pygame.display.set_mode((1200, 768))

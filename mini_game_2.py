@@ -1,6 +1,7 @@
 import pygame, random, time
 import gameElements
 
+
 pygame.init()
 
 FPS = pygame.time.Clock()
@@ -91,13 +92,6 @@ def draw():
         screen.blit(heart_2, heart_2_rect)
     elif hearts_lost == 2:
         screen.blit(heart_1, heart_1_rect)
-    elif hearts_lost == 3:
-        screen.fill((0,0,0))
-        msg = font.render("GAME OVER!", True, (255, 255, 255))
-        screen.blit(msg, [800//3, 800//3])
-        pygame.display.update()
-        time.sleep(5)
-        exec(open("minigame2_lose.py").read())
 
 def move():
     if keys[pygame.K_RIGHT]:
@@ -145,13 +139,20 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
+    if hearts_lost == 3:
+        screen.fill((0,0,0))
+        msg = font.render("GAME OVER!", True, (255, 255, 255))
+        screen.blit(msg, [800//3, 800//3])
+        pygame.display.update()
+        time.sleep(5)
+        exec(open("lose_minigame.py").read())
 
     resized_asteroid_rect.x += asteroid_x
     resized_asteroid_rect.y += asteroid_y
 
     if final_points_earned == 20:
         gameElements.minigame_2_complete = True
-        exec(open("minigame2_win.py").read())
+        exec(open("win_minigame.py").read())
 
     if points_earned == points_till_fast_asteroid:
         fast_asteroid_speed = 10
