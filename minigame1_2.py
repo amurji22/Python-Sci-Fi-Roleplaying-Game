@@ -4,16 +4,16 @@ from characterSelectionMenu import character_selected
 
 pygame.init()
 
-bg_img = pygame.image.load('town_background.jpg')
+bg_img = pygame.image.load('images/town_background.jpg')
 bg_rect = bg_img.get_rect()
 
-sign_img = pygame.image.load("small_sign_one.png")
+sign_img = pygame.image.load("images/small_sign_one.png")
 
 screen_width = 1200
 screen_height = 740
 screen = pygame.display.set_mode((screen_width, screen_height))
 
-backBtn = gameElements.Button('back_button.png',(180,100),100, 80, 20, 10, screen)
+backBtn = gameElements.Button('images/back_button.png',(180,100),100, 80, 20, 10, screen)
 
 player = gameElements.Character(character_selected, screen_width, screen_height, scale=0.5, speed=300)
 

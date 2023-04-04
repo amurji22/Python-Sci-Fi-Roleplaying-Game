@@ -149,7 +149,9 @@ minigame_1_complete = False
 
 minigame_3_complete = True
         
+shield_power = False
         
+speed_power = False
 
 
 

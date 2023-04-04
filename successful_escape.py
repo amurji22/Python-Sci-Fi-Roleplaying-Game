@@ -13,8 +13,6 @@ bg_rect = bg_img.get_rect()
 # render
 def render():
     screen.blit(bg_img, bg_rect)
-    
-
     pygame.display.flip()
 
 running = True

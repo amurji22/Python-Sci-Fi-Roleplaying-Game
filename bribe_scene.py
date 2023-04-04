@@ -13,14 +13,14 @@ character_selected = 'images/Character_One.png'
 screen = pygame.display.set_mode((1200, 740))
 
 # load the background and create its rect
-bg_img = pygame.image.load("bribe_scene_background.png")
+bg_img = pygame.image.load("images/bribe_scene_background.png")
 bg_rect = bg_img.get_rect()
 
 #create exit button
 exitButton = gameElements.Button('images/Exit.png',(173,75),90,50,12,2, screen)
 
 #load the cop image and create its rect
-og_copImage = pygame.image.load("space_cop.png")
+og_copImage = pygame.image.load("images/space_cop.png")
 og_copImage_rect = og_copImage.get_rect()
 
 #load the character image and create its rect
