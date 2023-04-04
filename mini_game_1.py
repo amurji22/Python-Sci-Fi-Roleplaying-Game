@@ -84,7 +84,7 @@ while running:
         if len(body_list) == 10:
             gameElements.minigame_1_complete = True
             print("Done")
-            exec(open('minigame3_win.py').read()) 
+            exec(open('win_minigame.py').read()) 
     else:
        snake()
     clock.tick(10)

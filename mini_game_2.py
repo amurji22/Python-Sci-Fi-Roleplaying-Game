@@ -152,7 +152,7 @@ while True:
 
     if final_points_earned == 20:
         gameElements.minigame_2_complete = True
-        exec(open("minigame2_win.py").read())
+        exec(open("win_minigame.py").read())
 
     if points_earned == points_till_fast_asteroid:
         fast_asteroid_speed = 10

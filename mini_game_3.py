@@ -69,7 +69,7 @@ while True:
             if score == 10:
                 gameElements.minigame_3_complete = True
                 print(f"You win!")
-                exec(open('minigame3_win.py').read())
+                exec(open('win_minigame.py').read())
         else:
             print(f"Collision detected! Final score: {score}")
             exec(open('minigame3_lose.py').read())
