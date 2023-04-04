@@ -72,7 +72,7 @@ while True:
                 exec(open('win_minigame.py').read())
         else:
             print(f"Collision detected! Final score: {score}")
-            exec(open('minigame3_lose.py').read())
+            exec(open('lose_minigame.py').read())
 
     # Reset the object if it reaches the left side of the screen
     if object.right < 0:

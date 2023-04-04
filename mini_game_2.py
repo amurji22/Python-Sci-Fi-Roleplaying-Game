@@ -145,7 +145,7 @@ while True:
         screen.blit(msg, [800//3, 800//3])
         pygame.display.update()
         time.sleep(5)
-        exec(open("minigame1_lose.py").read())
+        exec(open("lose_minigame.py").read())
 
     resized_asteroid_rect.x += asteroid_x
     resized_asteroid_rect.y += asteroid_y

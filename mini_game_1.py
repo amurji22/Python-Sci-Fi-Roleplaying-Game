@@ -58,7 +58,7 @@ while running:
         screen.blit(msg, [1200//3, 800//3])
         pygame.display.update()
         time.sleep(5)
-        exec(open('minigame1_lose.py').read()) 
+        exec(open('lose_minigame.py').read()) 
    #Handle the close or x button
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

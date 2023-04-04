@@ -3,7 +3,7 @@ import gameElements
         
 pygame.init()
 
-bg_img = pygame.image.load('images/minigame3_win_background.jpg')
+bg_img = pygame.image.load('images/win_background.jpg')
 bg_rect = bg_img.get_rect()
 
 screen = pygame.display.set_mode((1200, 768))
