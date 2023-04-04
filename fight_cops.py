@@ -109,11 +109,11 @@ while running:
     # if all cops are escaped
     if (cops_passed_counter == 0):
         # open end file
-        exec(open("").read())
+        exec(open("successful_escape.py").read())
     # detect collision between ship and cops
     if ship_rect.colliderect(cop1_rect) or  ship_rect.colliderect(cop2_rect) or ship_rect.colliderect(cop3_rect):
         # open the scene to bargain or fight with cop
-        exec(open("").read())
+        exec(open("if_captured.py").read())
     if pew_pew.colliderect(cop1_rect):
         cop1_rect.center = (random.randint(50,300), 0)
         cops_passed_counter -= 1
