@@ -1,4 +1,4 @@
-import pygame
+import pygame, time
 import gameElements
 
 pygame.init()
@@ -29,7 +29,7 @@ object = pygame.Rect(object_x, object_y, object_width, object_height)
 
 # Set up the score
 score = 0
-font = pygame.font.Font(None, 36)
+font = pygame.font.Font('PublicPixel-z84yD.ttf', 36)
 
 # Set up the clock
 clock = pygame.time.Clock()
@@ -67,11 +67,21 @@ while True:
                 print(f"Speed doubled! New speed: {object_speed}")
             object.x = screen_width
             if score == 10:
+                screen.fill((0,0,0))
+                msg = font.render("YOU WIN!", True, (255, 255, 255))
+                msg_rect = msg.get_rect(center=(screen_width/2, screen_height/2))
+                screen.blit(msg, msg_rect)
+                pygame.display.update()
+                time.sleep(5)
                 gameElements.minigame_3_complete = True
-                print(f"You win!")
                 exec(open('win_minigame.py').read())
         else:
-            print(f"Collision detected! Final score: {score}")
+            screen.fill((0,0,0))
+            msg = font.render("GAME OVER!", True, (255, 255, 255))
+            msg_rect = msg.get_rect(center=(screen_width/2, screen_height/2))
+            screen.blit(msg, msg_rect)
+            pygame.display.update()
+            time.sleep(5)
             exec(open('lose_minigame.py').read())
 
     # Reset the object if it reaches the left side of the screen
