@@ -31,16 +31,19 @@ cop2_rect.x = 1000
 cop3_rect.x = 550
 
 RED = (0, 0, 0)
+RED_2 = (0, 0, 0)
 
 laser_move_y = 2
 x = (ship_rect.centerx)
 y = (ship_rect.centery)
 pew_pew = pygame.Rect(1200,y,15,20)
+pew_pew_2 = pygame.Rect(1200,y,15,20)
 
 def render():
     screen.blit(bg_img, bg_rect)
     
     pygame.draw.rect(screen, RED, pew_pew)
+    pygame.draw.rect(screen,RED_2, pew_pew_2)
 
     screen.blit(ship_img, ship_rect)
 
@@ -64,6 +67,10 @@ def moveit_it():
     global RED
     RED = (255, 0, 0)
     pew_pew.y -= laser_move_y
+def moveit_it_2():
+    global RED_2
+    RED_2 = (255, 0, 0)
+    pew_pew_2.y -= laser_move_y
 
 if(gameElements.healer_power_up):
     hearts_lost = 0
@@ -92,6 +99,7 @@ else:
     move_speed_ship_R = (-1.8,0)
 
 move = False
+move_2 = False
 running = True
 # game loop
 while running:
@@ -111,10 +119,29 @@ while running:
             pew_pew.x = ship_rect.centerx
         if pew_pew.x == 1200:
             pew_pew.x = ship_rect.centerx
+        if pew_pew.y == -20:
+            move = False
+            pew_pew.x = 1200
         move = True
         
     if move:
         moveit_it()
+        if pew_pew.y < 500:
+            if keys[pygame.K_SPACE]:
+                if pew_pew_2.y < 0:
+                    pew_pew_2.y = ship_rect.centery
+                    pew_pew_2.x = ship_rect.centerx
+                if pew_pew_2.x == 1200:
+                    pew_pew_2.x = ship_rect.centerx
+                if pew_pew_2.y == -20:
+                    move_2 = False
+                    pew_pew.x = 1200
+                move_2 = True
+
+    if move_2:
+        moveit_it_2()
+
+        
     
 
     # cops move downward
@@ -152,15 +179,15 @@ while running:
     if(hearts_lost == 2):
         # open the scene to explore town when the ship is exploded
         exec(open("exploded_ship.py").read())
-    if pew_pew.colliderect(cop1_rect):
+    if pew_pew.colliderect(cop1_rect) or pew_pew_2.colliderect(cop1_rect):
         cop1_rect.center = (random.randint(50,300), 0)
         cops_passed_counter -= 1
         print("HIT")
-    if pew_pew.colliderect(cop2_rect):
+    if pew_pew.colliderect(cop2_rect) or pew_pew_2.colliderect(cop2_rect):
         cop2_rect.center = (random.randint(350,900), 0)
         cops_passed_counter -= 1
         print("HIT")
-    if pew_pew.colliderect(cop3_rect):
+    if pew_pew.colliderect(cop3_rect) or pew_pew_2.colliderect(cop3_rect):
         cop3_rect.center = (random.randint(950,1100), 0)
         cops_passed_counter -= 1
         print("HIT")
