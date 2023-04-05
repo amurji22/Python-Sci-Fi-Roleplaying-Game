@@ -65,9 +65,9 @@ while running:
         exitButton.command = False
     if bribeBtn.command == True:
         #coin toss for bribe
-        result = random.choice(['Heads', 'Tails'])
+        result = random.randint(1,10)
         # display the result
-        if result == 'Heads':
+        if result == 1 or result == 2 or result == 3:
             print("You win!")
             exec(open('successful_escape.py').read())
         else:

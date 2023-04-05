@@ -82,8 +82,12 @@ while running:
                     delta_y = 50
             snake()   
         if len(body_list) == 10:
+            screen.fill((0,0,0))
+            msg = font.render("YOU WIN!", True, (255, 255, 255))
+            screen.blit(msg, [1200//3, 800//3])
+            pygame.display.update()
+            time.sleep(5)
             gameElements.minigame_1_complete = True
-            print("Done")
             exec(open('win_minigame.py').read()) 
     else:
        snake()

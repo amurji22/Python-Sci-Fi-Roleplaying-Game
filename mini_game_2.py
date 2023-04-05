@@ -151,6 +151,11 @@ while True:
     resized_asteroid_rect.y += asteroid_y
 
     if final_points_earned == 20:
+        screen.fill((0,0,0))
+        msg = font.render("YOU WIN!", True, (255, 255, 255))
+        screen.blit(msg, [800//3, 800//3])
+        pygame.display.update()
+        time.sleep(5)
         gameElements.minigame_2_complete = True
         exec(open("win_minigame.py").read())
 
