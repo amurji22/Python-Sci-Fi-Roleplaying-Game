@@ -1,5 +1,6 @@
 import pygame, time
 import gameElements
+from characterSelectionMenu import character_selected
 
 pygame.init()
 
@@ -7,17 +8,23 @@ pygame.init()
 screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Space Squisher")
+pygame.display.set_caption("Worms vs Rocks")
 
 # Set up the player
-player_width = 50
-player_height = 50
+#player_width = 50
+#player_height = 50
+scale = 0.25
+player_img = pygame.image.load(character_selected)
+player_img = pygame.transform.scale(player_img, (int(player_img.get_width() * scale), int(player_img.get_height() * scale)))
+player = player_img.get_rect()
+player_width = player.width
+player_height = player.height
 player_x = 100
 player_y = screen_height - player_height - 50
 player_vel = 0
 player_acc = 0.5
 player_jump_vel = -10
-player = pygame.Rect(player_x, player_y, player_width, player_height)
+#player = pygame.Rect(player_x, player_y, player_width, player_height)
 
 # Set up the object
 object_width = 50
@@ -26,6 +33,11 @@ object_x = screen_width
 object_y = screen_height - object_height
 object_speed = 5
 object = pygame.Rect(object_x, object_y, object_width, object_height)
+
+def render():
+    screen.blit(player_img, player)
+
+render()
 
 # Set up the score
 score = 0
@@ -90,7 +102,7 @@ while True:
 
     # Draw the player and object
     screen.fill((0, 0, 0))
-    pygame.draw.rect(screen, (0, 0, 255), player)
+    #pygame.draw.rect(screen, (0, 0, 255), player)
     pygame.draw.rect(screen, (255, 0, 0), object)
 
     # Draw the score
@@ -98,6 +110,7 @@ while True:
     screen.blit(score_text, (10, 10))
 
     # Update the display
+    render()
     pygame.display.update()
 
     # Cap the frame rate
