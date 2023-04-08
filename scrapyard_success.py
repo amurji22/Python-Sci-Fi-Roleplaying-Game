@@ -11,9 +11,15 @@ pygame.display.set_caption("Build Ship")
 bg_img = pygame.image.load('images/scrapyard_success_background.png')
 bg_rect = bg_img.get_rect()
 
+# load spaceship img and create rect
+sp_img = pygame.image.load('images/spaceship.png')
+sp_rect = sp_img.get_rect()
+sp_rect.center = (1200/2, 768/2)
+
 # render function
 def render():
     screen.blit(bg_img, bg_rect)
+    screen.blit(sp_img, sp_rect)
     pygame.display.flip()
 
 # game loop
